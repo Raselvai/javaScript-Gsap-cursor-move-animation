@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="app, landing, corporate, Creative, Html Template, Template">
+    <meta name="author" content="web-themes">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- title -->
+    <title>JavaScript Gsap Cursor Animation</title>
+
+    <!-- favicon -->
+    <!-- <link href="img/favicon.png" type="image/png" rel="icon"> -->
+
+    <!-- all css here -->
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  
+
+    <div class="cursor"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script>
+        
+        document.addEventListener("DOMContentLoaded" , () => {
+            let cursor = document.querySelector('.cursor');
+            for (let i=0; i<36;i++) {
+                let span = document.createElement('span');
+                span.classList.add('box');
+                span.style.setProperty('--i',i+1);
+                span.style.filter = `hue-rotate(${i * 10}deg)`;
+                cursor.appendChild(span);
+            }
+        })
+        document.addEventListener("mousemove", e => {
+            gsap.to(".box", {
+                x: e.clientX,
+                y: e.clientY,
+                rotate: (index) => (index) * 10,
+                stagger: 0.05
+            })
+        })
+
+    </script>
+
+</body>
+</html>
